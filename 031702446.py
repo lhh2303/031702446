@@ -7,6 +7,7 @@
 """
 import re
 import json
+
 #李四,福建省福州13756899511市鼓楼区鼓西街道湖滨路110号湖滨大厦一层.
 dic1 = {}
 res = []
@@ -49,19 +50,19 @@ if (str2[:2]in data ):
         res.append(town.group())
         str2 = re.sub('.*[街道|镇|乡]', '', str2)
 
-    road = re.search('.*?[街|路|巷]', str2)
+    road = re.search('.*[街|路|巷]', str2)
     if road == None:
         res.append('')
     else:
         res.append(road.group())
-        str2 = re.sub('.*?[街|路|巷]', '', str2)
+        str2 = re.sub('.*[街|路|巷]', '', str2)
 
-    num = re.search('.*?号', str2)
+    num = re.search('.*号', str2)
     if num == None:
         res.append('')
     else:
         res.append(num.group())
-        str2 = re.sub('.*?号', '', str2)
+        str2 = re.sub('.*号', '', str2)
 
 
 #省
