@@ -1,10 +1,5 @@
-#!usr/bin/env python
 #-*- coding:utf-8 _*-
-"""
-@author:dell
-@file: 最终版.py
-@time: 2019/09/{DAY}
-"""
+
 import re
 import json
 
