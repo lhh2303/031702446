@@ -88,14 +88,14 @@ else:
         str2 = re.sub('.*?[县|区]', '', str2,1)
 
 #镇乡街道
-    town = re.search('.*(街道|镇|乡)', str2)
+    town = re.search('.*?(街道|镇|乡)', str2)
     if town == None:
         res.append('')
     else:
         res.append(town.group())
-        str2 = re.sub('.*(街道|镇|乡)','',str2,1)
+        str2 = re.sub('.*?(街道|镇|乡)','',str2,1)
 #路
-    road = re.search('.*?(街道|镇|乡)',str2)
+    road = re.search('.*?(街|路|巷)',str2)
     if road == None:
         res.append('')
     else:
