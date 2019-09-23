@@ -8,11 +8,11 @@ dic1 = {}
 res = []
 #切姓名和电话号码
 str1 = input()
+str1 = re.sub('\d!','',str1,1)
 name = re.search('(.*?,)', str1)
-phone_number = re.search('\d+', str1)
+phone_number = re.search('\d\d\d\d\d\d+', str1)
 #print(name , phone_number)
 #name.group()
-
 name = re.sub(',', '', name.group())
 
 dic1['姓名'] = name
@@ -31,33 +31,33 @@ if (str2[:2]in data ):
     res.append(str2[:2])
     res.append(str2[:2]+'市')
     str2 = str2.replace(str2[:2]+'市', '', 1)
-    county = re.search('.*?[县|区]', str2)
+    county = re.search('.*?(县|区)', str2)
     if county == None:
         res.append('')
     else:
         res.append(county.group())
-        str2 = re.sub('.*?[县|区]', '', str2)
+        str2 = re.sub('.*?(县|区)', '', str2,1)
 
-    town = re.search('.*[街道|镇|乡]', str2)
+    town = re.search('.*(街道|镇|乡)', str2)
     if town == None:
         res.append('')
     else:
         res.append(town.group())
-        str2 = re.sub('.*[街道|镇|乡]', '', str2)
+        str2 = re.sub('.*(街道|镇|乡)', '', str2,1)
 
-    road = re.search('.*[街|路|巷]', str2)
+    road = re.search('.*(街|路|巷)', str2)
     if road == None:
         res.append('')
     else:
         res.append(road.group())
-        str2 = re.sub('.*[街|路|巷]', '', str2)
+        str2 = re.sub('.*(街|路|巷)', '', str2,1)
 
     num = re.search('.*号', str2)
     if num == None:
         res.append('')
     else:
         res.append(num.group())
-        str2 = re.sub('.*号', '', str2)
+        str2 = re.sub('.*号', '', str2,1)
 
 
 #省
@@ -69,7 +69,7 @@ else:
         str2= str2[2:]
     else:
         res.append(provice.group())
-        str2 = re.sub('(.*省)', '', str2)
+        str2 = re.sub('(.*省)', '', str2,1)
 #市
     city = re.search('.*?市', str2)
     if city == None:
@@ -77,30 +77,30 @@ else:
         str2 = str2[2:]
     else:
         res.append(city.group())
-        str2 = re.sub('.*?市', '', str2)
+        str2 = re.sub('.*?市', '', str2,1)
 
 #区县
-    county =re.search('.*?[县|区]', str2)
+    county =re.search('.*?(县|区)', str2)
     if county == None:
         res.append('')
     else:
         res.append(county.group())
-        str2 = re.sub('.*?[县|区]', '', str2)
+        str2 = re.sub('.*?[县|区]', '', str2,1)
 
 #镇乡街道
-    town = re.search('.*[街道|镇|乡]', str2)
+    town = re.search('.*(街道|镇|乡)', str2)
     if town == None:
         res.append('')
     else:
         res.append(town.group())
-        str2 = re.sub('.*[街道|镇|乡]','',str2)
+        str2 = re.sub('.*(街道|镇|乡)','',str2,1)
 #路
-    road = re.search('.*?[街|路|巷]',str2)
+    road = re.search('.*?(街道|镇|乡)',str2)
     if road == None:
         res.append('')
     else:
         res.append(road.group())
-        str2 = re.sub('.*?[街|路|巷]','', str2)
+        str2 = re.sub('.*?(街|路|巷)','', str2,1)
 
 #号
     num = re.search('.*?号', str2)
@@ -108,7 +108,7 @@ else:
         res.append('')
     else:
         res.append(num.group())
-        str2 = re.sub('.*?号', '', str2)
+        str2 = re.sub('.*?号', '', str2,1)
 
 
 
