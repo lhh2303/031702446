@@ -38,19 +38,19 @@ if (str2[:2]in data ):
         res.append(county.group())
         str2 = re.sub('.*?(县|区)', '', str2,1)
 
-    town = re.search('.*(街道|镇|乡)', str2)
+    town = re.search('.*?(街道|镇|乡)', str2)
     if town == None:
         res.append('')
     else:
         res.append(town.group())
-        str2 = re.sub('.*(街道|镇|乡)', '', str2,1)
+        str2 = re.sub('.*?(街道|镇|乡)', '', str2,1)
 
-    road = re.search('.*(街|路|巷)', str2)
+    road = re.search('.*?(街|路|巷)', str2)
     if road == None:
         res.append('')
     else:
         res.append(road.group())
-        str2 = re.sub('.*(街|路|巷)', '', str2,1)
+        str2 = re.sub('.*?(街|路|巷)', '', str2,1)
 
     num = re.search('.*号', str2)
     if num == None:
